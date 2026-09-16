@@ -1,4 +1,4 @@
-# stopwatch
+# STOPWATCH
 This is stopwatch using internal Arduino clock, displaying time in seconds and milliseconds on LCD screen. 
 # Components Used
 - Arduino Uno

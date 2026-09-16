@@ -10,11 +10,12 @@ const uint16_t INTERVAL_BLINK    = 1000;  // Heartbeat blink interval (ms)
 const uint16_t INTERVAL_DEBOUNCE = 1;     // Debounce update interval (ms)
 
 unsigned long myTime;
-long progress;
+long progress; // takes part with time displaying while measuring
 int counter = 0;
 long starttime;
 long stoptime;
 float totaltime;
+int refreshingtime = 100; // time between counter refreshes (ms)
 
 uint32_t timeDebounce   = 0;
 Debounce myButton(PIN_BUTTON, HIGH);
@@ -50,7 +51,7 @@ void loop() {
   }
 
   if(counter == 2){
-    if (100 <= (myTime - progress)){
+    if (refreshingtime <= (myTime - progress)){
       progress = myTime;
       totaltime = progress - starttime;
       totaltime = totaltime / 1000;
